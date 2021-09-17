@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*---------- Grid ----------*/
+
+#container {
+    display: grid;
+    width: 600px;
+    height: 600px;
+    margin: 100px auto 0;
+    background-color: lightgray;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+}
