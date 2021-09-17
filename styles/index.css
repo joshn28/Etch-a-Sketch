@@ -13,10 +13,9 @@ button {
 
 #container {
     display: grid;
-    width: 600px;
-    height: 600px;
-    margin: 100px auto 0;
+    --size: 650px;
+    width: var(--size);
+    height: var(--size);
+    margin: 50px auto 0;
     background-color: lightgray;
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(16, 1fr);
 }
