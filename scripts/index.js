@@ -1,6 +1,17 @@
 let container = document.querySelector('#container');
-const clearButton = document.querySelector('button');
+let squareDivs;
+const clearButton = document.querySelector('#clear');
+const randomColorButton = document.querySelector('#random-color');
 const body = document.querySelector('body');
+
+function makeBackgroundBlack(div) {
+    div.target.style.backgroundColor = "black";
+}
+
+function makeBackgroundRandomColor(div) {
+    div.target.style.cssText = `background-color: rgb(${Math.floor(Math.random() * 256)}, 
+    ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+}
 
 function createGrid(cellSize = 16) {
     container.style['grid-template-columns'] = `repeat(${cellSize}, 1fr)`;
@@ -9,16 +20,13 @@ function createGrid(cellSize = 16) {
         const squareDiv = document.createElement('div');
         squareDiv.style.backgroundColor = "lightgrey";
         squareDiv.textContent = " ";
-        squareDiv.addEventListener('mouseover', (e) => {
-            e.target.style.backgroundColor = "black";
-        });
+        squareDiv.addEventListener('mouseover', makeBackgroundBlack, false);
         container.appendChild(squareDiv);
+        squareDivs = document.querySelectorAll('#container div');
     }
 }
 
 createGrid();
-
-const squareDivs = document.querySelectorAll('#container div');
 
 clearButton.addEventListener('click', () => {
     squareDivs.forEach((div) => {
@@ -27,11 +35,17 @@ clearButton.addEventListener('click', () => {
     let numberofSquares = Number(prompt('Enter the number of squares per side for the new grid'));
     console.log(numberofSquares);
     if (numberofSquares <= 100) {
-        console.log('worked');
         container.remove();
         container = document.createElement('div');
         container.setAttribute('id', 'container');
         body.appendChild(container);
         createGrid(numberofSquares);
     }
+});
+
+randomColorButton.addEventListener('click', () => {
+    squareDivs.forEach((div) => {
+        div.removeEventListener('mouseover', makeBackgroundBlack, false);
+        div.addEventListener('mouseover', makeBackgroundRandomColor, false);
+    })
 });
