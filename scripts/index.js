@@ -5,7 +5,12 @@ const randomColorButton = document.querySelector('#random-color');
 const body = document.querySelector('body');
 
 function makeBackgroundBlack(div) {
-    div.target.style.backgroundColor = "black";
+    if (Number(div.target.getAttribute('opacity')) < 1) {
+        let opacity = (Number(div.target.getAttribute('opacity'))*10 + 0.1*10) / 10;
+        div.target.setAttribute('opacity', opacity.toString());
+        div.target.style.cssText = `background-color: rgb(0, 0, 0, ${opacity})`;
+        console.log(opacity);
+    }
 }
 
 function makeBackgroundRandomColor(div) {
@@ -18,12 +23,13 @@ function createGrid(cellSize = 16) {
     container.style['grid-template-rows'] = `repeat(${cellSize}, 1fr)`;
     for (let i = 0; i < cellSize ** 2; i++) {
         const squareDiv = document.createElement('div');
-        squareDiv.style.backgroundColor = "lightgrey";
+        squareDiv.setAttribute('opacity', '0');
+        squareDiv.style.cssText = `background-color: rgba(0, 0, 0, 0.0)`;
         squareDiv.textContent = " ";
         squareDiv.addEventListener('mouseover', makeBackgroundBlack, false);
         container.appendChild(squareDiv);
-        squareDivs = document.querySelectorAll('#container div');
     }
+    squareDivs = document.querySelectorAll('#container div');
 }
 
 createGrid();
