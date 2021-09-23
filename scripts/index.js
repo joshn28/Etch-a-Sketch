@@ -1,5 +1,7 @@
-let container = document.querySelector('#container');
+let grid = document.querySelector('#grid');
 let squareDivs;
+const container = document.querySelector('#container');
+const buttonsDiv = document.querySelector('#buttons');
 const clearButton = document.querySelector('#clear');
 const randomColorButton = document.querySelector('#random-color');
 const body = document.querySelector('body');
@@ -19,17 +21,17 @@ function makeBackgroundRandomColor(div) {
 }
 
 function createGrid(cellSize = 16) {
-    container.style['grid-template-columns'] = `repeat(${cellSize}, 1fr)`;
-    container.style['grid-template-rows'] = `repeat(${cellSize}, 1fr)`;
+    grid.style['grid-template-columns'] = `repeat(${cellSize}, 1fr)`;
+    grid.style['grid-template-rows'] = `repeat(${cellSize}, 1fr)`;
     for (let i = 0; i < cellSize ** 2; i++) {
         const squareDiv = document.createElement('div');
         squareDiv.setAttribute('opacity', '0');
         squareDiv.style.cssText = `background-color: rgba(0, 0, 0, 0.0)`;
         squareDiv.textContent = " ";
         squareDiv.addEventListener('mouseover', makeBackgroundBlack, false);
-        container.appendChild(squareDiv);
+        grid.appendChild(squareDiv);
     }
-    squareDivs = document.querySelectorAll('#container div');
+    squareDivs = document.querySelectorAll('#grid div');
 }
 
 createGrid();
@@ -41,10 +43,10 @@ clearButton.addEventListener('click', () => {
     let numberofSquares = Number(prompt('Enter the number of squares per side for the new grid'));
     console.log(numberofSquares);
     if (numberofSquares <= 100) {
-        container.remove();
-        container = document.createElement('div');
-        container.setAttribute('id', 'container');
-        body.appendChild(container);
+        grid.remove();
+        grid = document.createElement('div');
+        grid.setAttribute('id', 'grid');
+        container.insertBefore(grid, buttonsDiv);
         createGrid(numberofSquares);
     }
 });
