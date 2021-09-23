@@ -9,8 +9,9 @@
 body {
     background-color: #F5F5DC;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 /*---------- Container ----------*/
@@ -21,13 +22,13 @@ body {
     width: calc(var(--size) * 1.4);
     background-color: red;
     border-radius: 5%;
+    height: calc(var(--size) * 1.4);
 }
 
 /*---------- Title ----------*/
 
 #container span {
-    text-align: center;
-    margin: 30px 0;
+    margin: auto;
     font-size: 32px;
 }
 
@@ -51,6 +52,6 @@ body {
     display: grid;
     width: var(--size);
     height: var(--size);
-    margin: 0 auto;
     background-color: lightgray;
+    align-self: center;
 }
