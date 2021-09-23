@@ -11,7 +11,6 @@ function makeBackgroundBlack(div) {
         let opacity = (Number(div.target.getAttribute('opacity'))*10 + 0.1*10) / 10;
         div.target.setAttribute('opacity', opacity.toString());
         div.target.style.cssText = `background-color: rgb(0, 0, 0, ${opacity})`;
-        console.log(opacity);
     }
 }
 
@@ -41,12 +40,13 @@ clearButton.addEventListener('click', () => {
         div.style.backgroundColor = "lightgrey";
     });
     let numberofSquares = Number(prompt('Enter the number of squares per side for the new grid'));
-    console.log(numberofSquares);
-    if (numberofSquares <= 100) {
-        grid.remove();
-        grid = document.createElement('div');
-        grid.setAttribute('id', 'grid');
-        container.insertBefore(grid, buttonsDiv);
+    grid.remove();
+    grid = document.createElement('div');
+    grid.setAttribute('id', 'grid');
+    container.insertBefore(grid, buttonsDiv);
+    if (isNaN(numberofSquares)) {
+        createGrid()
+    } else if (numberofSquares <= 100) {
         createGrid(numberofSquares);
     }
 });
