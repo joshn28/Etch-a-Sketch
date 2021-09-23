@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
 :root {
     --size: 550px;
 }
@@ -23,13 +25,16 @@ body {
     background-color: red;
     border-radius: 5%;
     height: calc(var(--size) * 1.4);
+    box-shadow: 10px 5px 5px black,
+                10px 5px 5px black;
 }
 
 /*---------- Title ----------*/
 
 #container span {
+    font-family: 'Fredoka One', cursive;
     margin: auto;
-    font-size: 32px;
+    font-size: 50px;
 }
 
 /*---------- Buttons ----------*/
