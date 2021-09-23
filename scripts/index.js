@@ -44,10 +44,10 @@ clearButton.addEventListener('click', () => {
     grid = document.createElement('div');
     grid.setAttribute('id', 'grid');
     container.insertBefore(grid, buttonsDiv);
-    if (isNaN(numberofSquares)) {
-        createGrid()
-    } else if (numberofSquares <= 100) {
+    if (numberofSquares <= 100) {
         createGrid(numberofSquares);
+    } else {
+        createGrid();
     }
 });
 
