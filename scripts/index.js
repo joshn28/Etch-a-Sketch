@@ -39,12 +39,12 @@ clearButton.addEventListener('click', () => {
     squareDivs.forEach((div) => {
         div.style.backgroundColor = "lightgrey";
     });
-    let numberofSquares = Number(prompt('Enter the number of squares per side for the new grid'));
+    let numberofSquares = Number(prompt('Enter the number of squares per side for the new grid (Max. 100)'));
     grid.remove();
     grid = document.createElement('div');
     grid.setAttribute('id', 'grid');
     container.insertBefore(grid, buttonsDiv);
-    if (numberofSquares <= 100) {
+    if (numberofSquares >= 1 && numberofSquares <= 100) {
         createGrid(numberofSquares);
     } else {
         createGrid();
