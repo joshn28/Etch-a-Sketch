@@ -1,34 +1,56 @@
 :root {
-    --size: 650px;
+    --size: 550px;
 }
 
 * {
     margin: 0;
 }
 
+body {
+    background-color: #F5F5DC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*---------- Container ----------*/
+
+#container {
+    display: flex;
+    flex-direction: column;
+    width: calc(var(--size) * 1.4);
+    background-color: red;
+    border-radius: 5%;
+}
+
+/*---------- Title ----------*/
+
+#container span {
+    text-align: center;
+    margin: 30px 0;
+    font-size: 32px;
+}
+
 /*---------- Buttons ----------*/
 
 #buttons {
     display: flex;
-    width: calc(var(--size) * 2 + 300px);
-    justify-content: flex-end;
-    margin: 0 auto;
+    justify-content: space-between;
 }
 
-div button {
-    display: block;
-    margin: 0 auto;
+#buttons button {
     width: 100px;
     border-radius: 50%;
     height: 100px;
+    margin: 0 10px 10px;
 }
 
 /*---------- Grid ----------*/
 
-#container {
+#grid {
     display: grid;
     width: var(--size);
     height: var(--size);
-    margin: 50px auto 0;
+    margin: 0 auto;
     background-color: lightgray;
 }
